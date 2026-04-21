@@ -1,0 +1,30 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Ansible
+*.log
+*.retry
+ansible_automation/backups/*
+!ansible_automation/backups/.gitkeep
+ansible_automation/inventory/group_vars/cisco.yml
+ansible_automation/inventory/host_vars/localhost.yml
+ansible_automation/inventory/**/vault.yml
+.vault_pass
+.vault-password
+
+# Secrets / env
+.env
+.env.*
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+*.swp

@@ -1,0 +1,26 @@
+---
+- name: Stop CML lab
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Authenticate to CML
+      uri:
+        url: "https://{{ cml_host }}/api/v0/authenticate"
+        method: POST
+        body_format: json
+        body:
+          username: "{{ cml_username }}"
+          password: "{{ cml_password }}"
+        return_content: true
+        validate_certs: false
+      register: cml_auth
+
+    - name: Stop lab
+      uri:
+        url: "https://{{ cml_host }}/api/v0/labs/{{ cml_lab_id }}/stop"
+        method: PUT
+        headers:
+          Authorization: "Bearer {{ cml_auth.json }}"
+        validate_certs: false
+        status_code: [200, 204]

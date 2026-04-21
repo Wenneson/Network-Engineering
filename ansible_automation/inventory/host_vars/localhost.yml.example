@@ -1,0 +1,9 @@
+---
+# CML (Cisco Modeling Labs) connection variables.
+# Copy this file to localhost.yml and fill in values for your lab.
+# localhost.yml is gitignored so your credentials never land in the public repo.
+
+cml_host: "CML_HOST_OR_IP"
+cml_lab_id: "YOUR_LAB_UUID"
+cml_username: "CHANGEME"
+cml_password: "CHANGEME"

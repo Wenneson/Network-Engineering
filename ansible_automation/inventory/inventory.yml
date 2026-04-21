@@ -1,0 +1,13 @@
+---
+all:
+  children:
+    cisco:
+      hosts:
+        router1:
+          ansible_host: 10.99.2.161
+        router2:
+          ansible_host: 10.99.2.162
+        router3:
+          ansible_host: 10.99.2.163
+        router4:
+          ansible_host: 10.99.2.164

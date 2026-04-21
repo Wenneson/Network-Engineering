@@ -1,0 +1,46 @@
+---
+- name: Collect show outputs from Cisco devices
+  hosts: cisco
+  gather_facts: no
+
+  vars:
+    base_dir: "../backups"
+
+  pre_tasks:
+    - name: Gather facts on localhost for timestamp
+      ansible.builtin.setup:
+      delegate_to: localhost
+      run_once: true
+      delegate_facts: true
+
+    - name: Set timestamp (once)
+      ansible.builtin.set_fact:
+        run_ts: "{{ hostvars['localhost'].ansible_date_time.iso8601_basic_short }}"
+      run_once: true
+
+    - name: Create local output directory
+      ansible.builtin.file:
+        path: "{{ base_dir }}/{{ run_ts }}"
+        state: directory
+      delegate_to: localhost
+      run_once: true
+
+  tasks:
+    - name: Run show commands
+      cisco.ios.ios_command:
+        commands:
+          - show version
+          - show running-config
+      register: show_output
+
+    - name: Save show version output
+      ansible.builtin.copy:
+        content: "{{ show_output.stdout[0] }}"
+        dest: "{{ base_dir }}/{{ run_ts }}/{{ inventory_hostname }}_show_version.txt"
+      delegate_to: localhost
+
+    - name: Save show running-config output
+      ansible.builtin.copy:
+        content: "{{ show_output.stdout[1] }}"
+        dest: "{{ base_dir }}/{{ run_ts }}/{{ inventory_hostname }}_show_run.txt"
+      delegate_to: localhost

@@ -1,0 +1,20 @@
+---
+- name: Configure OSPFv2 on Cisco IOS routers
+  hosts: cisco
+  gather_facts: no
+  connection: ansible.netcommon.network_cli
+
+  tasks:
+    - name: Configure OSPF process
+      cisco.ios.ios_ospfv2:
+        config:
+          processes:
+            - process_id: "{{ ospf.process_id }}"
+              router_id: "{{ ospf.router_id }}"
+              areas: "{{ ospf.areas }}"
+        state: merged
+
+    - name: Configure OSPF on interfaces
+      cisco.ios.ios_ospf_interfaces:
+        config: "{{ ospf.interfaces }}"
+        state: merged

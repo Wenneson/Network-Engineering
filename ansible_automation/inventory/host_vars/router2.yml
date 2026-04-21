@@ -1,0 +1,30 @@
+---
+ospf:
+  process_id: 1
+  router_id: 2.2.2.2
+  areas:
+    - area_id: "0"
+
+  interfaces:
+    - name: GigabitEthernet1
+      address_family:
+        - afi: ipv4
+          process:
+            id: 1
+            area_id: "0"
+          network:
+            point_to_point: true
+    - name: GigabitEthernet2
+      address_family:
+        - afi: ipv4
+          process:
+            id: 1
+            area_id: "0"
+    - name: GigabitEthernet3
+      address_family:
+        - afi: ipv4
+          process:
+            id: 1
+            area_id: "0"
+          network:
+            point_to_point: true
