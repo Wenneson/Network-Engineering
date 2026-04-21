@@ -1,3 +1,7 @@
+<img width="1604" height="980" alt="image" src="https://github.com/user-attachments/assets/36d411bc-f238-4ade-b5d2-4a437e3551e5" />
+
+
+
 # Network Engineering
 
 Public portfolio of my lab work as I study for the **Cisco CCIE Automation v1.1**
