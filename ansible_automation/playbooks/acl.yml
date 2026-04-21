@@ -1,0 +1,42 @@
+---
+- name: Configure ACL on R3
+  hosts: router3
+  gather_facts: no
+  connection: network_cli
+
+
+  tasks:
+    - name: Configure IPv4 ACL
+      cisco.ios.ios_acls:
+        state: merged
+        config:
+          - afi: ipv4
+            acls:
+              - name: BLOCK_1_TO_3
+                acl_type: extended
+                aces:
+                  - sequence: 10
+                    grant: deny
+                    protocol: ip
+                    source:
+                      host: 1.1.1.1
+                    destination:
+                      host: 3.3.3.3
+                  - sequence: 20
+                    grant: permit
+                    protocol: ip
+                    source:
+                      any: true
+                    destination:
+                      any: true
+
+    - name: Apply ACL inbound on G1
+      cisco.ios.ios_acl_interfaces:
+        state: merged
+        config:
+          - name: GigabitEthernet1
+            access_groups:
+              - afi: ipv4
+                acls:
+                  - name: BLOCK_1_TO_3
+                    direction: in
