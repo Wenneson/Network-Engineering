@@ -1,0 +1,23 @@
+R1:
+  hostname: 10.99.2.161
+  groups:
+    - cisco
+    - EMEA
+
+R2:
+  hostname: 10.99.2.162
+  groups:
+    - cisco
+    - EMEA
+
+R3:
+  hostname: 10.99.2.163
+  groups:
+    - cisco
+    - USA
+
+R4:
+  hostname: 10.99.2.164
+  groups:
+    - cisco
+    - USA

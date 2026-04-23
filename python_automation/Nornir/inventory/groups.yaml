@@ -1,0 +1,16 @@
+cisco:
+  platform: ios
+  username: lab_admin
+  password: Cisco123
+
+EMEA:
+   data:
+     ntp_servers: 
+       - 1.2.1.2
+       - 1.2.1.3
+
+USA:
+  data:
+    ntp_servers: 
+     - 3.4.3.4
+     - 3.4.3.5
