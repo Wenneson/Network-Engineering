@@ -8,7 +8,7 @@
   tasks:
     - name: Configure IPv4 ACL
       cisco.ios.ios_acls:
-        state: merged
+        state: replaced
         config:
           - afi: ipv4
             acls:
@@ -19,9 +19,9 @@
                     grant: deny
                     protocol: ip
                     source:
-                      host: 1.1.1.1
+                      host: 10.0.13.1
                     destination:
-                      host: 3.3.3.3
+                      host: 10.0.13.2
                   - sequence: 20
                     grant: permit
                     protocol: ip

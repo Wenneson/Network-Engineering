@@ -1,0 +1,17 @@
+---
+- name: Add local admin user on Cisco devices
+  hosts: cisco
+  gather_facts: no
+  connection: network_cli
+
+  tasks:
+    - name: Create local admin user
+      cisco.ios.ios_user:
+        name: lab_admin
+        configured_password: Cisco123
+        privilege: 15
+        state: present
+
+    - name: Save running config to startup config
+      cisco.ios.ios_config:
+        save_when: modified

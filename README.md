@@ -15,7 +15,7 @@ Maintained by **Michael Wenneson** — [GitHub @Wenneson](https://github.com/Wen
 | Area | Tools | Blueprint Topic | Description |
 |---|---|---|---|
 | [ansible_automation/](./ansible_automation) | Ansible, Cisco IOS-XE, CML | Infrastructure as Code | Playbooks for OSPFv2, NTP, loopbacks, device backups, and CML lab lifecycle. |
-| [python_automation/](./python_automation) | Python, Netmiko, Cisco IOS-XE | Network Programmability & Automation | Netmiko scripts for config push and show-command collection against the same 4-router CML lab. |
+| [python_automation/](./python_automation) | Python, Netmiko, NAPALM, Nornir, Cisco IOS-XE | Network Programmability & Automation | Netmiko, NAPALM, and Nornir examples for config push, fact collection, and inventory-driven parallel automation against the same 4-router CML lab. |
 
 _Planned as I work through the blueprint:_ Terraform · NETCONF/RESTCONF + YANG ·
 pyATS/Genie assurance · Git-backed CI/CD pipelines · observability and
